@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-py"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Task {
+  id            String              @id @default(uuid())
+  title         String
+  description   String?
+  status        String              @default("todo")
+  priority      String              @default("medium")
+  dueDate       DateTime?
+  parentId      String?
+  parent        Task?               @relation("TaskHierarchy", fields: [parentId], references: [id], onDelete: Cascade)
+  subtasks      Task[]              @relation("TaskHierarchy")
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  relatedChunks TaskKnowledge[]
+}
+
+model Knowledge {
+  id          String  @id @default(uuid())
+  title       String
+  source      String
+  content     String
+  createdAt   DateTime @default(now())
+  chunks      Chunk[]
+}
+
+model Chunk {
+  id            String              @id @default(uuid())
+  knowledgeId   String
+  knowledge     Knowledge           @relation(fields: [knowledgeId], references: [id], onDelete: Cascade)
+  content       String
+  embedding     String              // JSONで保存
+  relatedTasks  TaskKnowledge[]     // ← 追加：双方向リレーション
+}
+
+model TaskKnowledge {
+  taskId    String
+  chunkId   String
+  task      Task   @relation(fields: [taskId], references: [id], onDelete: Cascade)
+  chunk     Chunk  @relation(fields: [chunkId], references: [id], onDelete: Cascade)
+  score     Float
+  @@id([taskId, chunkId])
+}

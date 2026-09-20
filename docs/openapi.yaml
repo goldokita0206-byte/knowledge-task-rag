@@ -1,0 +1,35 @@
+openapi: 3.0.3
+info:
+  title: Knowledge-Task RAG API
+  version: 1.0.0
+paths:
+  /api/tasks:
+    get:   summary: タスク一覧取得
+    post:  summary: タスク作成
+  /api/tasks/{id}:
+    get:    summary: 単一タスク取得
+    patch:  summary: タスク更新
+    delete: summary: タスク削除
+  /api/knowledge:
+    post: summary: ドキュメント登録（チャンク化・埋め込み付き）
+  /api/search:
+    post:
+      summary: RAG検索実行
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                query: { type: string }
+                limit: { type: number, default: 5 }
+  /api/ai/decompose:
+    post:
+      summary: 自然言語仕様からタスクを自動分解
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                specification: { type: string }

@@ -1,0 +1,33 @@
+<html><body><form><input typetype='text' id='number1' /><input type='text' id='number2' /><br /><select id='operation'><option value='+'>+<option value='-'>-<option value='*'>*<opvalue='*'>*<option value='/' /></select><br /><input type='button' value='=value='=' onclick='calculate()'/><br /><span id='result'></span></form></boid='result'></span></form></body></html>
+<script>var numbers = document.gedocument.getElementById('number1').value;
+var numbers2 = document.getElemedocument.getElementById('number2').value;
+var operation = document.getElemdocument.getElementById('operation').value;
+
+function calculate(){
+    var result;
+    var numbers = parseInt(numbers);
+    var numbers2 = parseparseInt(numbers2);
+    if(isNaN(numbers) || isNaN(numbers2)){
+        aalert('Please enter valid numbers!');
+        return;
+}
+    switch(oswitch(operation){
+        case '+':
+            result = numbers + numbnumbers2;
+            break;
+        case '-':
+            result = numbnumbers - numbers2;
+            break;
+        case '*':
+            resresult = numbers * numbers2;
+            break;
+        case '/':
+            if(numbers2 === 0){
+                alert('Cannot divide by zero!')zero!');
+                return;
+}
+            result = numbnumbers / numbers2;
+            break;
+}
+    document.getElementByIddocument.getElementById('result').innerText = result;
+}</script>

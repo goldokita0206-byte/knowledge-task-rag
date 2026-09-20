@@ -1,0 +1,18 @@
+解析エラー:
+Invalid control character at: line 1 column 76 (char 75)
+
+AI出力:
+{"files": [{"name": "index.html", "content": "<!DOCTYPE html>\n<html>\n<hea[19D[K
+html>\n<html>\n<head><title>メモ帳</title></head>\n<body>\n<h1>メモ帳</h1>\[6D[K
+</h1>\n<ul id='notes'></ul>\n\n<script>\nconst notesList = document.querySe[16D[K
+document.querySelector('#notes');\n\nfunction addNote(e) {\n  e.preventDefa[13D[K
+e.preventDefault();\n  const li = document.createElement('li');\n  const in[2D[K
+input = document.createElement('input');\n  input.type = 'text';\n  li.appe[7D[K
+li.appendChild(input);\n  const deleteBtn = document.createElement('button'[31D[K
+document.createElement('button');\n  deleteBtn.textContent = '削除';\n  del[3D[K
+deleteBtn.onclick = function() {\n    notesList.removeChild(li);\n  };\n  l[1D[K
+li.appendChild(deleteBtn);\n  notesList.appendChild(li);\n}\n\nconst form =[1D[K
+= document.createElement('form');\nform.innerHTML = `<input type='text' pla[3D[K
+placeholder='メモを追加'>&<button onclick='addNote(event)'>追加</button>`;\[12D[K
+</button>`;\nnotesList.parentNode.insertBefore(form, notesList);\n</script>[22D[K
+notesList);\n</script>\n</body>\n</html>"}]
