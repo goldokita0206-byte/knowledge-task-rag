@@ -1,9 +1,24 @@
-node_modules/
-**/node_modules/
-.next/
-**/.next/
+# Python
 venv/
-**/venv/
 __pycache__/
-**/__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+
+# Database
 *.db
+*.db-journal
+
+# Node
+frontend/node_modules/
+frontend/.next/
+frontend/package-lock.json
+
+# Generated files
+backend/generated/
+
+# System
+pagefile.sys
+Thumbs.db
+.DS_Store
